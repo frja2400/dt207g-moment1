@@ -1,17 +1,34 @@
 <!DOCTYPE html>
 <html lang="sv">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/styles.css">
     <title>Moment 1 - Serverbaserad webbutveckling</title>
 </head>
+
 <body>
     <header>
         <%- include("partials/mainnav") %>
     </header>
     <main>
-        <p>Om sidan</p>
+        <h2>Syfte</h2>
+        <p>Syftet med denna uppgift var att lära mig skapa en serverbaserad webbapplikation. I denna applikation
+            kan du addera och radera kurser via ett formulär som lagras i en databas och skrivs ut i en tabell i
+            webbapplikationen.
+        </p>
+        <h2>Databas-server</h2>
+        <p>Jag använde mig av SQLite i denna uppgift. Jag installerade sqlite3 innan jag började koda mitt projekt,
+            kodade en install-fil och laddade ned extension SQLite Explorer för att kunna se mina tabeller i min databas
+            direkt i VSC.</p>
+        <h2>Slutsats</h2>
+        <p>Jag kämpade med denna uppgift. Mest för att jag inte fick till det alls lika bra med PostgreSQL som jag
+            provade först. Allting fungerade förutom att radera kurserna eller validera input-fälten. Så det
+            slutade med att jag använde SQLite som jag tyckte gick mycket bättre. Dock så har jag inte hittat ett bra
+            sätt att publicera med sqlite, därför så visar jag min lösning i en videodemonstration. Sammanfattningsvis
+            så tyckte jag det var en rolig uppgift men jag skulle gärna vilja jobba mer med PostgreSQL.</p>
     </main>
 </body>
+
 </html>

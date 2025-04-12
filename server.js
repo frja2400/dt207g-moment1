@@ -33,6 +33,20 @@ app.get("/", (req, res) => {
     });
 });
 
+//Radera inlägg
+app.get("/delete/:id", (req, res) => {
+    let id = req.params.id;
+
+    db.run("DELETE FROM courses WHERE id=?;", id, (err) => {
+        if (err) {
+            console.error(err.message);
+        }
+
+        //Redirect till startsida
+        res.redirect("/");
+    });
+});
+
 app.get("/courses", (req, res) => {
     res.render("courses", {
         error: ""

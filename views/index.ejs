@@ -30,6 +30,11 @@
                         <td><%= row.coursename %></td>
                         <td><%= row.progression %></td>
                         <td><%= row.syllabus %></td>
+                        <td>
+                            <a href="/delete/<%= row.id %>">
+                                <button>TA BORT</button>
+                            </a>
+                        </td>
                     </tr>
                     <% }); %>
                 <% } %>
