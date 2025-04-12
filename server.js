@@ -34,7 +34,9 @@ app.get("/", (req, res) => {
 });
 
 app.get("/courses", (req, res) => {
-    res.render("courses");
+    res.render("courses", {
+        error: ""
+    });
 });
 
 app.post("/courses", (req, res) => {
@@ -51,11 +53,12 @@ app.post("/courses", (req, res) => {
         const statement = db.prepare("INSERT INTO courses (coursecode, coursename, syllabus, progression) VALUES(?, ?, ?, ?)");
         statement.run(coursecode, coursename, syllabus, progression);
         statement.finalize();
+        res.redirect("/");
     } else {
-        error = "Du måste fylla i alla fält."
+        res.render("courses", {
+            error: "Du måste fylla i alla fält."
+        });
     }
-
-    res.redirect("/");
 });
 
 app.get("/about", (req, res) => {

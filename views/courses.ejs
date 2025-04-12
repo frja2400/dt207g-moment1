@@ -15,14 +15,20 @@
         <p id="formInstruction">Fyll i formuläret nedan för att lägga till en kurs till kurslistan.</p>
         <form id="courseForm" method="post" action="/courses">
 
+            <% if(error !="" ) { %>
+                <p>
+                    <%= error %>
+                </p>
+                <% } %>
+
             <label for="code">Kurskod:</label><br>
-            <input type="text" id="code" name="coursecode" required>
+            <input type="text" id="code" name="coursecode">
             <br>
             <label for="name">Kursnamn:</label><br>
-            <input type="text" id="name" name="coursename" required>
+            <input type="text" id="name" name="coursename">
             <br>
             <label for="progression">Progression:</label><br>
-            <select id="progression" name="progression" required>
+            <select id="progression" name="progression">
                 <option value="" disabled selected>Välj</option>
                 <option value="A">A</option>
                 <option value="B">B</option>
@@ -30,7 +36,7 @@
             </select>
             <br>
             <label for="url">URL till kursplanen:</label><br>
-            <input type="url" id="url" name="syllabus" required>
+            <input type="url" id="url" name="syllabus">
             <br>
             <button type="submit">LÄGG TILL</button>
         </form>
