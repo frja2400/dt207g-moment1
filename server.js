@@ -25,6 +25,27 @@ app.get("/courses", (req, res) => {
     res.render("courses");
 });
 
+app.post("/courses", (req, res) => {
+    let coursecode = req.body.coursecode;
+    let coursename = req.body.coursename;
+    let syllabus = req.body.syllabus;
+    let progression = req.body.progression;
+
+    let error = "";
+
+    //Kontrollera input
+    if (coursecode != "" && coursename != "" && syllabus != "" && progression != "") {
+        //Korrekt - lagra i db
+        const statement = db.prepare("INSERT INTO courses (coursecode, coursename, syllabus, progression) VALUES(?, ?, ?, ?)");
+        statement.run(coursecode, coursename, syllabus, progression);
+        statement.finalize();
+    } else {
+        error = "Du måste fylla i alla fält."
+    }
+
+    res.redirect("/");
+});
+
 app.get("/about", (req, res) => {
     res.render("about");
 });
