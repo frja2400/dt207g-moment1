@@ -10,5 +10,31 @@
     <header>
         <%- include("partials/mainnav") %>
     </header>
+    <main>
+        <h2>Kurslistan:</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Kurskod</th>
+                    <th>Kursnamn</th>
+                    <th>Progression</th>
+                    <th>URL till kursplanen</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="courseList">
+                <% if(locals.rows.length > 0) { %>
+                    <% locals.rows.forEach((row)=> { %>
+                    <tr>
+                        <td><%= row.coursecode %></td>
+                        <td><%= row.coursename %></td>
+                        <td><%= row.progression %></td>
+                        <td><%= row.syllabus %></td>
+                    </tr>
+                    <% }); %>
+                <% } %>
+            </tbody>
+        </table>
+    </main>
 </body>
 </html>

@@ -18,7 +18,19 @@ app.use(bodyParser.urlencoded({ extended: true }));             //Använder body
 
 //Routing
 app.get("/", (req, res) => {
-    res.render("index");
+    //Denna rad kör en SQL-fråga som hämtar alla rader från tabellen courses.
+    db.all("SELECT * FROM courses;", (err, rows) => {
+        //Här kontrolleras om det uppstod ett fel när SQL-frågan kördes.
+        if (err) {
+            console.error(err.message);
+        }
+        //Denna rad renderar "index.ejs"-filen och skickar med ett objekt med data till vyn.
+        res.render("index", {
+            //Här skickas en tom sträng som värde för "error"-nyckeln i objektet som skickas till vyn.
+            error: "",
+            rows: rows
+        });
+    });
 });
 
 app.get("/courses", (req, res) => {
