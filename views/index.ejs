@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="sv">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +8,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <title>Moment 1 - Serverbaserad webbutveckling</title>
 </head>
+
 <body>
     <header>
-        <%- include("partials/mainnav") %>
+        <h1>Moment 1 - DT207G</h1>
+        <nav>
+            <ul>
+                <li class="current"><a href="/">Kurslista</a></li>
+                <li class="option"><a href="/courses">Lägg till kurser</a></li>
+                <li class="option"><a href="/about">Om sidan</a></li>
+            </ul>
+        </nav>
     </header>
     <main>
         <h2>Kurslistan:</h2>
@@ -24,23 +33,32 @@
                 </tr>
             </thead>
             <tbody id="courseList">
-                <% if(locals.rows.length > 0) { %>
+                <% if(locals.rows.length> 0) { %>
                     <% locals.rows.forEach((row)=> { %>
-                    <tr>
-                        <td><%= row.coursecode %></td>
-                        <td><%= row.coursename %></td>
-                        <td><%= row.progression %></td>
-                        <td><a href="<%= row.syllabus %>" target="_blank"><%= row.syllabus %></a></td>
-                        <td>
-                            <a href="/delete/<%= row.id %>">
-                                <strong class="fas fa-times" id="delete"></strong>
-                            </a>
-                        </td>
-                    </tr>
-                    <% }); %>
-                <% } %>
+                        <tr>
+                            <td>
+                                <%= row.coursecode %>
+                            </td>
+                            <td>
+                                <%= row.coursename %>
+                            </td>
+                            <td>
+                                <%= row.progression %>
+                            </td>
+                            <td><a href="<%= row.syllabus %>" target="_blank">
+                                    <%= row.syllabus %>
+                                </a></td>
+                            <td>
+                                <a href="/delete/<%= row.id %>">
+                                    <strong class="fas fa-times" id="delete"></strong>
+                                </a>
+                            </td>
+                        </tr>
+                        <% }); %>
+                            <% } %>
             </tbody>
         </table>
     </main>
 </body>
+
 </html>

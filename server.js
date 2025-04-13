@@ -84,7 +84,7 @@ app.post("/courses", (req, res) => {
             if (err) {
                 //Kontrollera om kurskoden är unik.
                 if (err.message.includes("UNIQUE constraint failed")) {
-                    error = "Kurskoden finns redan. Välj en annan.";
+                    error = "Kurskoden finns redan.";
                 } else {
                     error = "Ett fel inträffade.";
                     console.error(err);

@@ -17,7 +17,6 @@ main {
     padding: 2%;
     background-color: white;
     box-sizing: border-box;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
     border-bottom-left-radius: 100px;
     border-bottom-right-radius: 100px;
 }
@@ -53,10 +52,107 @@ th {
     font-size: 1.7em;
 }
 
-h2 {
+h2,
+#formInstruction {
     text-align: center;
 }
 
 p {
     line-height: 1.7em;
-  }
+}
+
+.text {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    /* centrera menyn */
+    padding: 0;
+    margin: 0;
+}
+
+nav {
+    width: 80%;
+    margin: 0 auto;
+}
+
+li a {
+    text-decoration: none;
+    color: white;
+    display: block;
+    padding: 10px 0;
+}
+
+li {
+    flex: 1;
+    text-align: center;
+    border: 2px solid white;
+    border-right: none;
+    border-bottom: none;
+}
+
+li:last-child {
+    border-right: 2px solid white;
+}
+
+.current {
+    background-color: white;
+}
+
+.current a {
+    color: rgb(47, 47, 207);
+}
+
+.option:hover {
+    background-color: white;
+}
+
+.option:hover a {
+    color: rgb(47, 47, 207);
+}
+
+button {
+    padding: 5px;
+    border-radius: 5px;
+    background-color: rgb(47, 47, 207);
+    color: white;
+    cursor: pointer;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+}
+
+form {
+    border: 2px solid grey;
+    padding: 30px;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 50px;
+}
+
+input,
+select {
+  margin-bottom: 20px;
+  margin-top: 10px;
+  border: 1px solid grey;
+  border-radius: 5px;
+  width: 500px;
+}
+
+select {
+  width: 50px;
+}
+
+.error {
+    font-weight: bold;
+    color: red;
+}
