@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="sv">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/styles.css">
     <title>Moment 1 - Serverbaserad webbutveckling</title>
 </head>
+
 <body>
     <header>
         <%- include("partials/mainnav") %>
@@ -21,25 +23,26 @@
                 </p>
                 <% } %>
 
-            <label for="code">Kurskod:</label><br>
-            <input type="text" id="code" name="coursecode">
-            <br>
-            <label for="name">Kursnamn:</label><br>
-            <input type="text" id="name" name="coursename">
-            <br>
-            <label for="progression">Progression:</label><br>
-            <select id="progression" name="progression">
-                <option value="" disabled selected>Välj</option>
-                <option value="A">A</option>
-                <option value="B">B</option>
-                <option value="C">C</option>
-            </select>
-            <br>
-            <label for="url">URL till kursplanen:</label><br>
-            <input type="url" id="url" name="syllabus">
-            <br>
-            <button type="submit">LÄGG TILL</button>
+                    <label for="code">Kurskod:</label><br>
+                    <input type="text" id="code" name="coursecode" value="<%= values?.coursecode || '' %>">
+                    <br>
+                    <label for="name">Kursnamn:</label><br>
+                    <input type="text" id="name" name="coursename" value="<%= values?.coursename || '' %>">
+                    <br>
+                    <label for="progression">Progression:</label><br>
+                    <select id="progression" name="progression">
+                        <option value="" disabled <%=!values?.progression ? 'selected' : '' %>>Välj</option>
+                        <option value="A" <%=values?.progression==="A" ? 'selected' : '' %>>A</option>
+                        <option value="B" <%=values?.progression==="B" ? 'selected' : '' %>>B</option>
+                        <option value="C" <%=values?.progression==="C" ? 'selected' : '' %>>C</option>
+                    </select>
+                    <br>
+                    <label for="url">URL till kursplanen:</label><br>
+                    <input type="url" id="url" name="syllabus" value="<%= values?.syllabus || '' %>">
+                    <br>
+                    <button type="submit">LÄGG TILL</button>
         </form>
     </main>
 </body>
+
 </html>

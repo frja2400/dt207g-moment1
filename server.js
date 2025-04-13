@@ -47,30 +47,61 @@ app.get("/delete/:id", (req, res) => {
     });
 });
 
+//Skickar med tomma värden för att undvika fel då jag vill att ifyllda värden ska stå kvar om man missat ett fält.
 app.get("/courses", (req, res) => {
     res.render("courses", {
-        error: ""
+        error: "",
+        values: {
+            coursecode: "",
+            coursename: "",
+            syllabus: "",
+            progression: ""
+        }
     });
 });
 
 app.post("/courses", (req, res) => {
-    let coursecode = req.body.coursecode;
-    let coursename = req.body.coursename;
-    let syllabus = req.body.syllabus;
-    let progression = req.body.progression;
+    //Tar bort onödiga mellanslag
+    const coursecode = (req.body.coursecode || "").trim();
+    const coursename = (req.body.coursename || "").trim();
+    const syllabus = (req.body.syllabus || "").trim();
+    const progression = (req.body.progression || "").trim();
 
     let error = "";
 
     //Kontrollera input
-    if (coursecode != "" && coursename != "" && syllabus != "" && progression != "") {
-        //Korrekt - lagra i db
+    //Validera progression specifikt
+    const validProgressions = ["A", "B", "C"];
+
+    if (
+        coursecode &&
+        coursename &&
+        syllabus &&
+        validProgressions.includes(progression)
+    ) {
         const statement = db.prepare("INSERT INTO courses (coursecode, coursename, syllabus, progression) VALUES(?, ?, ?, ?)");
-        statement.run(coursecode, coursename, syllabus, progression);
-        statement.finalize();
-        res.redirect("/");
+        statement.run(coursecode, coursename, syllabus, progression, function (err) {
+            if (err) {
+                //Kontrollera om kurskoden är unik.
+                if (err.message.includes("UNIQUE constraint failed")) {
+                    error = "Kurskoden finns redan. Välj en annan.";
+                } else {
+                    error = "Ett fel inträffade.";
+                    console.error(err);
+                }
+                //Visa formuläret igen med felmeddelande och redan ifyllda värden.
+                return res.render("courses", {
+                    error,
+                    values: { coursecode, coursename, syllabus, progression }
+                });
+            }
+            statement.finalize();
+            res.redirect("/");
+        });
     } else {
         res.render("courses", {
-            error: "Du måste fylla i alla fält."
+            error: "Du måste fylla i alla fält.",
+            values: { coursecode, coursename, syllabus, progression }
         });
     }
 });
