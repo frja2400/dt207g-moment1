@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <title>Moment 1 - Serverbaserad webbutveckling</title>
 </head>
 <body>
@@ -29,10 +30,10 @@
                         <td><%= row.coursecode %></td>
                         <td><%= row.coursename %></td>
                         <td><%= row.progression %></td>
-                        <td><%= row.syllabus %></td>
+                        <td><a href="<%= row.syllabus %>" target="_blank"><%= row.syllabus %></a></td>
                         <td>
                             <a href="/delete/<%= row.id %>">
-                                <button>TA BORT</button>
+                                <strong class="fas fa-times" id="delete"></strong>
                             </a>
                         </td>
                     </tr>
