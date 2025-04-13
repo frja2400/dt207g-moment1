@@ -49,7 +49,7 @@ th {
     background-color: rgb(216, 234, 240);
 }
 
-#delete {
+.delete {
     color: red;
     font-size: 1.7em;
 }
