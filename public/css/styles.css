@@ -35,6 +35,7 @@ header {
 table {
     width: 100%;
     border-collapse: collapse;
+    margin-bottom: 50px;
 }
 
 th,
@@ -58,6 +59,10 @@ h2,
     text-align: center;
 }
 
+h2 {
+    margin-top: 50px;
+}
+
 p {
     line-height: 1.7em;
 }
@@ -66,6 +71,7 @@ p {
     width: 100%;
     max-width: 500px;
     margin: 0 auto;
+    margin-bottom: 50px;
 }
 
 ul {
@@ -205,5 +211,36 @@ select {
         overflow: hidden;
         text-overflow: ellipsis;
     }
+}
 
+@media screen and (max-width : 800px) {
+
+    form {
+        width: 80%;
+        border: transparent;
+    }
+
+    input {
+        width: 100%;
+    }
+
+    .text {
+        width: 80%;
+    }
+
+    main {
+        width: 100%;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    header {
+        width: 100%;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+
+    nav {
+        width: 90%;
+    }
 }
