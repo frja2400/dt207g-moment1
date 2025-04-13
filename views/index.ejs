@@ -33,21 +33,23 @@
                 </tr>
             </thead>
             <tbody id="courseList">
-                <% if(locals.rows.length> 0) { %>
+                <% if (locals.rows.length> 0) { %>
                     <% locals.rows.forEach((row)=> { %>
                         <tr>
-                            <td>
+                            <td data-label="Kurskod">
                                 <%= row.coursecode %>
                             </td>
-                            <td>
+                            <td data-label="Kursnamn">
                                 <%= row.coursename %>
                             </td>
-                            <td>
+                            <td data-label="Progression">
                                 <%= row.progression %>
                             </td>
-                            <td><a href="<%= row.syllabus %>" target="_blank">
+                            <td data-label="Kursplan">
+                                <a href="<%= row.syllabus %>" target="_blank">
                                     <%= row.syllabus %>
-                                </a></td>
+                                </a>
+                            </td>
                             <td>
                                 <a href="/delete/<%= row.id %>">
                                     <strong class="fas fa-times" id="delete"></strong>

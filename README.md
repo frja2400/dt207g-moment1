@@ -9,4 +9,4 @@ Här så installerade jag även dotenv och skapade en .env-fil som jag också ad
 Jag skapade min db-mapp och körde node install. Min databas adderade jag också i min gitignore-fil.
 Här skapade jag alla mina ejs-filer och mappar som jag behövde och började koda min server.js. I min server.js så importerade jag moduler, anslöt till databas, gjorde routing och startade applikationen. I terminalen så körde jag node server. 
 
- I min server.js samt mina ejs-filer så kodade jag applikationens syfte och funktion. Jag skapar också ett ER-diagram över min tabell. Slutresultatet blev en webbapplikation som kan lagra kurser via ett formulär i en databas samt skriva ut och radera dessa till webbapplikationen.
+I min server.js samt mina ejs-filer så kodade jag applikationens syfte och funktion. Jag skapar också ett ER-diagram över min tabell. Slutresultatet blev en webbapplikation som kan lagra kurser via ett formulär i en databas samt skriva ut och radera dessa till webbapplikationen.
